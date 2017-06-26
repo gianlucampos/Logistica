@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,38 +12,34 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Servlet_Principal", urlPatterns = {"/Servlet_Principal"})
 public class Servlet_Principal extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Servlet_Principal</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Servlet_Principal at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = resp.getWriter();
+        try {
+            String acao = req.getParameter("acao"); //Aqui vai receber a acao enviada atraves do id do jsp
+            if ("calcular".equals(acao)) {
+                //Processa_acao processa = new Processa_acao(req, resp);
+                //processa.processo();Isso aqui que realmente deve acontecer, coloquei abaixo so pra mostrar
+                RequestDispatcher despacha = req.getRequestDispatcher("mostra_rota.jsp");
+                despacha.forward(req, resp);
+            }
+
+        } catch (Exception ex) {
+
+            Servlet_Principal.dispatcherErro(req, resp);
+            ex.printStackTrace();
+
+        } finally {
+            if (out != null) {
+                out.close();
+            }
         }
+
     }
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    public static void dispatcherErro(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatchererro = req.getRequestDispatcher("erro.jsp");
+        dispatchererro.forward(req, resp);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-
 }

@@ -3,7 +3,12 @@
     Created on : 23/06/2017, 20:39:10
     Author     : gianluca
 --%>
-
+<%
+// Evitar cache das páginas
+    response.setHeader("Cache-Control", "no-cache"); //HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); //HTTP 1.0
+    response.setDateHeader("Expires", 0); //prevents caching at the proxy server
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -63,10 +68,10 @@
 
             <input type="hidden" name="acaoCRUD" id="acaoCRUD"> <br>
 
-            <input class="buttons" type="button" onclick="salvar()"  name="acaoCRUD"value="Salvar"/>
-            <input class="buttons" type="button" onclick="limpar()"  value="Limpar"/>
+            <button class="botao" type="submit"style="width: 103px; height: 42px;" value=""></button>
+            <input type="button" style="width: 103px; height: 42px;"onclick="limpar()"  value="Limpar"/>
 
-            <input type="hidden" name="acao" value="cadastro"/>    <%-- joga pro servlet acao == cadastro --%>      
+            <input type="hidden" name="acao" id="acao" value="calcular"/>   
         </form>
     </body>
 </html>
