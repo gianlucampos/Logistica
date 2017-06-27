@@ -11,7 +11,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <%
+        if ("true".equals(request.getAttribute("sucesso"))) {
+
+            String rota = (String) request.getAttribute("xorigem");
+
+    %>
+
+    <script>
+        alert("Rota x é:" + <%=rota%>);// Quero passar o numero conta aqui
+    </script>
+
+    <%            }
+    %>
+
     <body>
-        <h1>Melhor rota: Entrega 3,2,5,1,4 Distância percorrida:55,42km</h1>
+        
     </body>
 </html>

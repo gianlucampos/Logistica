@@ -19,8 +19,8 @@ public class Servlet_Principal extends HttpServlet {
         try {
             String acao = req.getParameter("acao"); //Aqui vai receber a acao enviada atraves do id do jsp
             if ("calcular".equals(acao)) {
-                //Processa_acao processa = new Processa_acao(req, resp);
-                //processa.processo();Isso aqui que realmente deve acontecer, coloquei abaixo so pra mostrar
+                Processa_acao processa = new Processa_acao(req, resp);
+                processa.processo();
                 RequestDispatcher despacha = req.getRequestDispatcher("mostra_rota.jsp");
                 despacha.forward(req, resp);
             }

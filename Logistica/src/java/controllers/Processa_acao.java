@@ -28,8 +28,12 @@ public class Processa_acao {
     }
 
     public void processo() throws ServletException, IOException, SQLException {
+        
+        String x_origem = req.getParameter("X_origem");
+        req.setAttribute("sucesso", "true");
+        req.setAttribute("xorigem", String.valueOf(x_origem));//Mostrar numero conta ao cadastrar com sucesso, para que o cliente saiba fazer o seu login
 
-        //aqui dentro decidiremos o que calcular
+        
     }
 
 }
