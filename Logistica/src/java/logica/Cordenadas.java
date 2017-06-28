@@ -2,30 +2,30 @@ package logica;
 
 public class Cordenadas {
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 83 * hash + this.x;
-        hash = 83 * hash + this.y;
+        int hash = 7;
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.x) ^ (Double.doubleToLongBits(this.x) >>> 32));
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.y) ^ (Double.doubleToLongBits(this.y) >>> 32));
         return hash;
     }
 

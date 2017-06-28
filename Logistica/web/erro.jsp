@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>Algo deu errado tente novamente!</h1>
+        <a style="color: black" class="labelsErro" href="index.jsp"><h1> Tente novamente</h1></a>
     </body>
 </html>

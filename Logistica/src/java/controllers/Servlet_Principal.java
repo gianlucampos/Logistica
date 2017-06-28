@@ -21,7 +21,7 @@ public class Servlet_Principal extends HttpServlet {
             if ("calcular".equals(acao)) {
                 Processa_acao processa = new Processa_acao(req, resp);
                 processa.processo();
-                RequestDispatcher despacha = req.getRequestDispatcher("mostra_rota.jsp");
+                RequestDispatcher despacha = req.getRequestDispatcher("index.jsp");
                 despacha.forward(req, resp);
             }
 

@@ -2,26 +2,44 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 public class Caminhoneiro {
 
-    public Caminhoneiro() {
+    private double x[];
+    private double y[];
+
+    public Caminhoneiro(double[] x, double[] y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double[] getX() {
+        return x;
+    }
+
+    public void setX(double[] x) {
+        this.x = x;
+    }
+
+    public double[] getY() {
+        return y;
+    }
+
+    public void setY(double[] y) {
+        this.y = y;
+    }
+
+    public void Guia() {
 
         //Declaração de um objeto do tipo Posição e uma lista de Posições
         List<Cordenadas> posicao = new ArrayList<>();
         Cordenadas p;
 
-        //Pergunta ao usuario quantas entregas serão feitas
-        int numEntregas = Integer.parseInt(JOptionPane.showInputDialog("Digite o numero de entregas:"));
-
         //Recebe as coordenadas das entregas
-        for (int i = 0; i < numEntregas; i++) {
+        for (int i = 0; i < 5; i++) {
             p = new Cordenadas();
-
-            p.setX(Integer.parseInt(JOptionPane.showInputDialog("Digite o X da posição de entrega " + (i + 1) + ":")));
-            p.setY(Integer.parseInt(JOptionPane.showInputDialog("Digite o Y da posição de entrega " + (i + 1) + ":")));
-
+            p.setX(x[i]);//setar a cordenada x passada la na pagina
+            p.setY(y[i]);//
             posicao.add(p);
         }
 

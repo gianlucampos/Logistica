@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import logica.Caminhoneiro;
 
 public class Processa_acao {
 
@@ -16,24 +17,36 @@ public class Processa_acao {
         this.resp = resp;
     }
 
-    public void pega_parametros() throws ServletException, IOException, SQLException {
+    public void processo() throws ServletException, IOException, SQLException {
 
-        String nome = req.getParameter("txtNome");
-        int cpf = Integer.parseInt(req.getParameter("txtCpf"));
-        int telefone = Integer.parseInt(req.getParameter("txtTelefone"));
-        String email = req.getParameter("txtEmail");
-        String usuario = req.getParameter("txtUsuario");
-        String senha = req.getParameter("txtSenha");
+        seta_parametros();//vai executar as funcoes 
 
     }
 
-    public void processo() throws ServletException, IOException, SQLException {
-        
-        String x_origem = req.getParameter("X_origem");
-        req.setAttribute("sucesso", "true");
-        req.setAttribute("xorigem", String.valueOf(x_origem));//Mostrar numero conta ao cadastrar com sucesso, para que o cliente saiba fazer o seu login
+    public void seta_parametros() throws ServletException, IOException, SQLException {
 
+        double x[] = new double[5];
+        x[0] = Double.parseDouble(req.getParameter("X_origem"));
+        x[1] = Double.parseDouble(req.getParameter("X1"));
+        x[2] = Double.parseDouble(req.getParameter("X2"));
+        x[3] = Double.parseDouble(req.getParameter("X3"));
+        x[4] = Double.parseDouble(req.getParameter("X4"));
         
+        double y[] = new double[5];
+        y[0]= Double.parseDouble(req.getParameter("Y_origem"));
+        y[1] = Double.parseDouble(req.getParameter("Y1"));
+        y[2] = Double.parseDouble(req.getParameter("Y2"));
+        y[3] = Double.parseDouble(req.getParameter("Y3"));
+        y[4] = Double.parseDouble(req.getParameter("Y4"));
+        
+       Caminhoneiro cam = new Caminhoneiro(x,y);
+       cam.Guia();
+
+
+       // req.setAttribute("sucesso", "true");
+       // req.setAttribute("melhor_rota", String.valueOf(y4));
+       
+
     }
 
 }
