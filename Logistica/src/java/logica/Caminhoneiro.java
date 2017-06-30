@@ -7,6 +7,8 @@ public class Caminhoneiro {
 
     private double x[];
     private double y[];
+    private double[] melhorPosX = new double[5];
+    private double[] melhorPosY = new double[5];
 
     public Caminhoneiro(double[] x, double[] y) {
         this.x = x;
@@ -29,17 +31,33 @@ public class Caminhoneiro {
         this.y = y;
     }
 
+    public double[] getMelhorPosX() {
+        return melhorPosX;
+    }
+
+    public void setMelhorPosX(double[] melhorPosX) {
+        this.melhorPosX = melhorPosX;
+    }
+
+    public double[] getMelhorPosY() {
+        return melhorPosY;
+    }
+
+    public void setMelhorPosY(double[] melhorPosY) {
+        this.melhorPosY = melhorPosY;
+    }
+
     public void Guia() {
 
         //Declaração de um objeto do tipo Posição e uma lista de Posições
         List<Cordenadas> posicao = new ArrayList<>();
         Cordenadas p;
 
-        //Recebe as coordenadas das entregas
+        //Recebe as coordenadas das entregas, nesse caso vai ser 5 entregas para serem entregues
         for (int i = 0; i < 5; i++) {
-            p = new Cordenadas();
-            p.setX(x[i]);//setar a cordenada x passada la na pagina
-            p.setY(y[i]);//
+            p = new Cordenadas();// para cada entrega um respectiva cordenada
+            p.setX(x[i]);//que ira ser setada atraves de parametros descritos la da pagina
+            p.setY(y[i]);
             posicao.add(p);
         }
 
@@ -58,7 +76,7 @@ public class Caminhoneiro {
         for (List<Cordenadas> l : lista) {
             aux = new Rota();
             aux.setPos(l);
-            if (aux.getDistancia() < distancia) {
+            if (aux.getDistancia() < distancia) {//se a distancia real for menor que a aux, será o melhor caminho
                 caminho.setPos(l);
                 distancia = aux.getDistancia();
             }
@@ -73,8 +91,13 @@ public class Caminhoneiro {
         System.out.println("\nMelhor caminho:");
         //Exibe o melhor caminho dentre as opções
         System.out.print("(0,0) ");
+        int iterativo = 0;
+        double[] melhorPosX2 = new double[5];
         for (Cordenadas pos : caminho.getPos()) {
             System.out.print("(" + pos.getX() + "," + pos.getY() + ") ");
+            melhorPosX[iterativo] = pos.getX();//armazenar em um vetor para mandar como parametro
+            melhorPosY[iterativo] = pos.getY();//o melhor caminho
+            iterativo++;
         }
         System.out.print("(0,0)\n");
         System.out.println("Distancia Percorrida: " + caminho.getDistancia());

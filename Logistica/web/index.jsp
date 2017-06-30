@@ -99,12 +99,27 @@
     </script>
     <%        if ("true".equals(request.getAttribute("sucesso"))) {
 
-            String rota = (String) request.getAttribute("melhor_rota");
+            String rotaX0 = (String) request.getAttribute("melhorX0");
+            String rotaX1 = (String) request.getAttribute("melhorX1");
+            String rotaX2 = (String) request.getAttribute("melhorX2");
+            String rotaX3 = (String) request.getAttribute("melhorX3");
+            String rotaX4 = (String) request.getAttribute("melhorX4");
+
+            String rotaY0 = (String) request.getAttribute("melhorY0");
+            String rotaY1 = (String) request.getAttribute("melhorY1");
+            String rotaY2 = (String) request.getAttribute("melhorY2");
+            String rotaY3 = (String) request.getAttribute("melhorY3");
+            String rotaY4 = (String) request.getAttribute("melhorY4");
 
     %>
 
     <script>
-        alert("Rota x é:" + <%=rota%>);// Quero passar o numero conta aqui
+        alert("A Melhor rota é ir por:" + "[" +<%=rotaX0%> + "]" + " " + "[" +<%=rotaY0%> + "]");
+        alert("Depois:" + "[" +<%=rotaX1%> + "]" + " " + "[" +<%=rotaY1%> + "]");
+        alert("Então vá para:" + "[" +<%=rotaX2%> + "]" + " " + "[" +<%=rotaY2%> + "]");
+        alert("Ai siga até:" + "[" +<%=rotaX3%> + "]" + " " + "[" +<%=rotaY3%> + "]");
+        alert("Por último:" + "[" +<%=rotaX4%> + "]" + " " + "[" +<%=rotaY4%> + "]");
+
     </script>
 
     <%            }
@@ -139,10 +154,9 @@
             <input type="number" name="X4" id="X4" size="5"value="<%//nao permitir nulos%>"/>
             <label> Y4: </label>
             <input type="number" name="Y4" id="Y4" size="5"value="<%//nao permitir nulos%>"/><br>
-
-            <input type="hidden" name="acaoCRUD" id="acaoCRUD"> <br>
-            <button class="botao" type="submit" onclick="nao_permite_nulo()" style="width: 103px; height: 42px;" value=""></button>
-            <input type="button" style="width: 103px; height: 42px;"onclick="limpar()"  value="Limpar"/>
+            <br><br> 
+            <button class="botao" type="submit" onclick="nao_permite_nulo()" style="width: 103px; height: 32px;" value=""></button>
+            <input type="button" style="width: 103px; height: 32px;"onclick="limpar()"  value="Limpar"/>
             <input type="hidden" name="acao" id="acao" value="calcular"/>
         </form>
     </body>

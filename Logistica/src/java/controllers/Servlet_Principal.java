@@ -20,7 +20,7 @@ public class Servlet_Principal extends HttpServlet {
             String acao = req.getParameter("acao"); //Aqui vai receber a acao enviada atraves do id do jsp
             if ("calcular".equals(acao)) {
                 Processa_acao processa = new Processa_acao(req, resp);
-                processa.processo();
+                processa.recebe_envia();
                 RequestDispatcher despacha = req.getRequestDispatcher("index.jsp");
                 despacha.forward(req, resp);
             }
