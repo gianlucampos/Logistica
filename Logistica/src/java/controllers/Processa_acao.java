@@ -43,6 +43,7 @@ public class Processa_acao {
     //Recebe um vetor ordenado por indice com o melhor caminho |X[0] = melhor x inicial cordenada... etc |
         double melhorX[] = cam.getMelhorPosX();// recebe em um vetor, em ordem as melhores coordenadas
         double melhorY[] = cam.getMelhorPosY();
+        double distancia = cam.getMelhorDistancia();
     //-------------------------------------------------------------------------------------------------------
     //Envia pra página exibir as cordenadas em ordem com o melhor caminho
         req.setAttribute("sucesso", "true");//pra cair no if do js
@@ -58,7 +59,6 @@ public class Processa_acao {
         req.setAttribute("melhorY3", String.valueOf(melhorY[3]));
         req.setAttribute("melhorY4", String.valueOf(melhorY[4]));
         
-
+        req.setAttribute("distancia", String.valueOf(distancia));
     }
-
 }

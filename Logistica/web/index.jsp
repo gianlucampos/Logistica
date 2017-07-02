@@ -110,15 +110,18 @@
             String rotaY2 = (String) request.getAttribute("melhorY2");
             String rotaY3 = (String) request.getAttribute("melhorY3");
             String rotaY4 = (String) request.getAttribute("melhorY4");
+            
+            String distancia = (String) request.getAttribute("distancia");
 
     %>
 
     <script>
-        alert("A Melhor rota é ir por:" + "[" +<%=rotaX0%> + "]" + " " + "[" +<%=rotaY0%> + "]");
-        alert("Depois:" + "[" +<%=rotaX1%> + "]" + " " + "[" +<%=rotaY1%> + "]");
-        alert("Então vá para:" + "[" +<%=rotaX2%> + "]" + " " + "[" +<%=rotaY2%> + "]");
-        alert("Ai siga até:" + "[" +<%=rotaX3%> + "]" + " " + "[" +<%=rotaY3%> + "]");
-        alert("Por último:" + "[" +<%=rotaX4%> + "]" + " " + "[" +<%=rotaY4%> + "]");
+        alert("A Melhor rota é ir por: " + "[" +<%=rotaX0%> + "]" + " " + "[" +<%=rotaY0%> + "]");
+        alert("Depois: " + "[" +<%=rotaX1%> + "]" + " " + "[" +<%=rotaY1%> + "]");
+        alert("Então vá para: " + "[" +<%=rotaX2%> + "]" + " " + "[" +<%=rotaY2%> + "]");
+        alert("Ai siga até: " + "[" +<%=rotaX3%> + "]" + " " + "[" +<%=rotaY3%> + "]");
+        alert("Por último: " + "[" +<%=rotaX4%> + "]" + " " + "[" +<%=rotaY4%> + "]");
+        alert("Distância total: " + <%=distancia%> + "km");
 
     </script>
 
@@ -155,7 +158,7 @@
             <label> Y4: </label>
             <input type="number" name="Y4" id="Y4" size="5"value="<%//nao permitir nulos%>"/><br>
             <br><br> 
-            <button class="botao" type="submit" onclick="nao_permite_nulo()" style="width: 103px; height: 32px;" value=""></button>
+            <button class="botao" type="submit" onclick="nao_permite_nulo()" style="width: 103px; height: 32px;" value="Calcula"></button>
             <input type="button" style="width: 103px; height: 32px;"onclick="limpar()"  value="Limpar"/>
             <input type="hidden" name="acao" id="acao" value="calcular"/>
         </form>

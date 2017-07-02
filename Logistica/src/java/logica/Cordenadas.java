@@ -1,6 +1,6 @@
 package logica;
 
-public class Cordenadas {
+public class Cordenadas {//Vai conter os valores x,y para manipulação
 
     private double x;
     private double y;
